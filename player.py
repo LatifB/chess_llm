@@ -108,6 +108,7 @@ class TransformerPlayer(Player):
             # Here we just need a consistent 64-len sequence.
             ranks = [PIECE_TO_INT[c] for c in board_str]
             results.append(ranks)
+            results = np.array(results)
         return torch.from_numpy(results).long().to(self.device)
 
     def get_status_evals(self, fens):
