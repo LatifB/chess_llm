@@ -120,7 +120,7 @@ class TransformerPlayer(Player):
         board_arrays = self.parse_fens(fens)
         
         # Convert to torch tensor
-        board_tensors = torch.from_numpy(board_arrays).long().to(self.device)
+        board_tensors = board_arrays.long().to(self.device)
         
         # Get model predictions
         with torch.no_grad():
