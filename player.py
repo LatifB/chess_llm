@@ -3,6 +3,7 @@ import chess
 import torch
 import torch.nn as nn
 from typing import Optional
+import numpy as np
 # from transformers import AutoTokenizer, AutoModelForCausalLM
 
 from chess_tournament.players import Player
