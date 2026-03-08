@@ -140,7 +140,7 @@ class TransformerPlayer(Player):
         # terminal condition
         if depth == 0 or board.is_game_over():
             fen = board.fen()
-            return self.get_status_evals(model, [fen])[0]
+            return self.get_status_evals([fen])[0]
 
         if maximizing:
             value = -float("inf")
