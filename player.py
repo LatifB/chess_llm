@@ -1,3 +1,4 @@
+import os
 import chess
 import torch
 import torch.nn as nn
@@ -77,6 +78,7 @@ class TransformerPlayer(Player):
         self.model = self.load_model().to(self.device)
 
     def load_model(self):
+        print(os.listdir("./"))
         model = ChessFormer(vocab_size=13, embed_dim=256, n_heads=8, n_layers=4, dropout=0.1)
         model.load_state_dict(torch.load("./mechanical_turk_v2.pth", weights_only=True, map_location=torch.device(self.device)))
         model.eval()
