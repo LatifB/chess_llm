@@ -145,7 +145,8 @@ class TransformerPlayer(Player):
         # terminal condition
         if depth == 0 or board.is_game_over():
             fen = board.fen()
-            return self.get_status_evals([fen])[0]
+            multiplier = 1 if board.turn else -1
+            return self.get_status_evals([fen])[0] * multiplier
 
         if maximizing:
             value = -float("inf")
@@ -183,8 +184,8 @@ class TransformerPlayer(Player):
         best_score = -float("inf")
         for move in board.legal_moves:
             board.push(move)
-            maximize = True if board.turn else False
-            score = self.minimax(board, depth - 1, -float("inf"), float("inf"), maximize, model)
+            # maximize = True if board.turn else False
+            score = self.minimax(board, depth - 1, -float("inf"), float("inf"), True, model)
             board.pop()
             if score > best_score:
                 best_score = score
