@@ -183,7 +183,8 @@ class TransformerPlayer(Player):
         best_score = -float("inf")
         for move in board.legal_moves:
             board.push(move)
-            score = self.minimax(board, depth - 1, -float("inf"), float("inf"), False, model)
+            maximize = True if board.turn else False
+            score = self.minimax(board, depth - 1, -float("inf"), float("inf"), maximize, model)
             board.pop()
             if score > best_score:
                 best_score = score
