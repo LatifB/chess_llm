@@ -72,7 +72,7 @@ class ChessFormer(nn.Module):
 class TransformerPlayer(Player):
     
 
-    def __init__(self, name: str="mechanical_turk_V2", depth: int=3):
+    def __init__(self, name: str="mechanical_turk_V2", depth: int=4):
         self.name = name
         self.depth = depth
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
